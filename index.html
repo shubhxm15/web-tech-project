@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Vulnerability Practice</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Web Vulnerability Practice Platform</h1>
+    </header>
+
+    <main>
+      <!-- XSS Section -->
+      <section id="xss-demo" class="demo-section">
+        <h2>Cross-Site Scripting (XSS)</h2>
+        <p>
+          <strong>Description:</strong> XSS occurs when an attacker injects
+          malicious scripts into web pages viewed by others.
+        </p>
+        <p><strong>Steps to Perform:</strong></p>
+        <ol>
+          <li>
+            Enter a JavaScript payload like
+            <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code> in the input
+            field below.
+          </li>
+          <li>Submit the input to see the script execute on the page.</li>
+          <li>Learn how to prevent XSS by sanitizing inputs.</li>
+        </ol>
+        <form>
+          <label for="xss-input">Enter your script:</label>
+          <input type="text" id="xss-input" placeholder="Enter JavaScript..." />
+          <button type="button" onclick="runXSS()">Submit</button>
+        </form>
+        <div id="xss-output" class="output"></div>
+      </section>
+
+      <!-- IDOR Section -->
+      <section id="idor-demo" class="demo-section">
+        <h2>Insecure Direct Object Reference (IDOR)</h2>
+        <p>
+          <strong>Description:</strong> IDOR vulnerabilities allow attackers to
+          access unauthorized resources by manipulating parameters like IDs in
+          URLs.
+        </p>
+        <p><strong>Steps to Perform:</strong></p>
+        <ol>
+          <li>Enter your User ID and password below to log in.</li>
+          <li>Access user pages to see if unauthorized access is possible.</li>
+          <li>
+            Learn how to prevent IDOR by implementing access control checks.
+          </li>
+        </ol>
+        <form id="login-form" onsubmit="handleLogin(event)">
+          <label for="userId">User ID:</label>
+          <input type="text" id="userId" placeholder="Enter User ID" required />
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter Password"
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
+      </section>
+
+      <!-- Broken Links Section -->
+      <section id="broken-link-demo" class="demo-section">
+        <h2>Broken Links</h2>
+        <p>
+          <strong>Description:</strong> Broken link vulnerabilities occur when
+          unused or missing links expose sensitive information or functionality.
+        </p>
+        <p><strong>Steps to Perform:</strong></p>
+        <ol>
+          <li>
+            Click on the dummy social media buttons below to analyze if they
+            lead to sensitive or broken links.
+          </li>
+          <li>Inspect network requests to understand the response.</li>
+          <li>
+            Learn how to prevent this by properly handling missing or outdated
+            links.
+          </li>
+        </ol>
+        <div class="social-buttons">
+          <button class="social-button">Facebook</button>
+          <button class="social-button">Twitter</button>
+          <button class="social-button">Instagram</button>
+        </div>
+      </section>
+
+      <!-- Subdomain Takeover Section -->
+      <section id="subdomain-takeover-demo" class="demo-section">
+        <h2>Subdomain Takeover</h2>
+        <p>
+          <strong>Description:</strong> This vulnerability occurs when a
+          subdomain points to an unused resource that attackers can claim.
+        </p>
+        <p><strong>Steps to Perform:</strong></p>
+        <ol>
+          <li>
+            Visit the subdomain link below to see if the resource returns a 404
+            error or similar issue.
+          </li>
+          <li>Analyze the page for potential takeover opportunities.</li>
+          <li>Learn how to prevent this by cleaning up unused subdomains.</li>
+        </ol>
+        <a
+          href="https://vulnerable.example.com"
+          target="_blank"
+          class="test-link"
+          >Test Subdomain</a
+        >
+      </section>
+
+      <!-- DDoS Section -->
+      <section id="ddos-demo" class="demo-section">
+        <h2>Distributed Denial of Service (DDoS)</h2>
+        <p>
+          <strong>Description:</strong> DDoS attacks overwhelm a server with a
+          massive number of requests, causing service disruptions.
+        </p>
+        <p><strong>Steps to Perform:</strong></p>
+        <ol>
+          <li>
+            Use the button below to simulate sending multiple requests to a
+            server.
+          </li>
+          <li>Monitor the server's response time to observe any slowdown.</li>
+          <li>
+            Learn how to prevent DDoS attacks by implementing rate limiting and
+            traffic monitoring.
+          </li>
+        </ol>
+        <button type="button" onclick="simulateDDoS()">Simulate DDoS</button>
+        <div id="ddos-output" class="output"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Created for educational purposes only. Do not use this tool for
+        unauthorized testing.
+      </p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
